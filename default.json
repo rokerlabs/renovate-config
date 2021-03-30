@@ -1,0 +1,72 @@
+{
+  "extends": [
+    ":separateMajorReleases",
+    ":separatePatchReleases",
+    ":ignoreUnstable",
+    ":prNotPending",
+    ":semanticCommits",
+    ":semanticPrefixFixDepsChoreOthers",
+    ":updateNotScheduled",
+    ":automergeDisabled",
+    ":ignoreModulesAndTests",
+    ":autodetectPinVersions",
+    ":prHourlyLimit2",
+    ":prConcurrentLimit20",
+    "group:monorepos",
+    "group:recommended",
+    "helpers:disableTypesNodeMajor",
+    "workarounds:all"
+  ],
+  "lockFileMaintenance": {
+    "automerge": true,
+    "automergeType": "branch"
+  },
+  "packageRules": [
+    {
+      "managers": ["buildkite"],
+      "extends": [":semanticCommitTypeAll(ci)"]
+    },
+    {
+      "managers": ["buildkite"],
+      "updateTypes": ["minor"],
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "managers": ["composer"],
+      "depTypeList": "require-dev",
+      "extends": [":semanticCommitTypeAll(ci)"]
+    },
+    {
+      "managers": ["dockerfile"],
+      "extends": [":semanticCommitTypeAll(build)"]
+    },
+    {
+      "managers": ["gomod"],
+      "extends": [":semanticCommitTypeAll(fix)"]
+    },
+    {
+      "managers": ["npm"],
+      "depTypeList": "devDependencies",
+      "extends": [":semanticCommitTypeAll(build)"]
+    },
+    {
+      "managers": ["npm"],
+      "updateTypes": ["pin"],
+      "extends": [":semanticCommitTypeAll(build)"]
+    }
+  ],
+  "patch": {
+    "automerge": true,
+    "automergeType": "branch"
+  },
+  "pin": {
+    "automerge": true,
+    "automergeType": "branch"
+  },
+  "reviewersFromCodeOwners": true,
+  "vulnerabilityAlerts": {
+    "labels": ["security"],
+    "assignees": ["samjmarshall"]
+  }
+}
