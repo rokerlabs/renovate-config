@@ -66,7 +66,6 @@
   },
   "reviewersFromCodeOwners": true,
   "vulnerabilityAlerts": {
-    "labels": ["security"],
-    "assignees": ["samjmarshall"]
+    "labels": ["security"]
   }
 }
