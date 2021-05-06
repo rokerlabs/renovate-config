@@ -19,7 +19,8 @@
   ],
   "lockFileMaintenance": {
     "automerge": true,
-    "automergeType": "branch"
+    "automergeType": "branch",
+    "enabled": true
   },
   "packageRules": [
     {
